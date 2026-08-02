@@ -18,6 +18,16 @@ router.get("/health", (req, res) => {
   });
 });
 
+// =================================
+// TEST ROUTE
+// =================================
+
+router.get("/test-route", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "NEW ROUTES INDEX IS WORKING",
+  });
+});
 
 // =================================
 // SERVICES
