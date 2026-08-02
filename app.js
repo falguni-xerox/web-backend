@@ -5,19 +5,48 @@ const routes = require("./routes");
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// =================================
+// CORS
+// =================================
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://web-frontend-sigma-orcin.vercel.app",
+    ],
+    methods: [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE",
+      "OPTIONS",
+    ],
+    credentials: true,
+  })
+);
+
+// =================================
+// MIDDLEWARE
+// =================================
+
 app.use(express.json());
 
-// Home Route
+// =================================
+// HOME ROUTE
+// =================================
+
 app.get("/", (req, res) => {
   res.json({
     success: true,
-    message: "Falguni Xerox API Running"
+    message: "Falguni Xerox API Running",
   });
 });
 
-// API Routes
+// =================================
+// API ROUTES
+// =================================
+
 app.use("/api", routes);
 
 module.exports = app;
