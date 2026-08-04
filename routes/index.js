@@ -3,6 +3,7 @@ const express = require("express");
 const serviceRoutes = require("./serviceRoutes");
 const websiteSettingsRoutes = require("./websiteSettingsRoutes");
 const serviceCategoryRoutes = require("./serviceCategoryRoutes");
+const smartPrintingRoutes = require("./smartPrinting");
 
 const router = express.Router();
 
@@ -35,7 +36,6 @@ router.get("/test-route", (req, res) => {
 
 router.use("/services", serviceRoutes);
 
-
 // =================================
 // SERVICE CATEGORIES
 // =================================
@@ -45,12 +45,19 @@ router.use(
   serviceCategoryRoutes
 );
 
-
 // =================================
 // WEBSITE SETTINGS
 // =================================
 
 router.use("/settings", websiteSettingsRoutes);
 
+// =================================
+// SMART PRINTING SYSTEM
+// =================================
+
+router.use(
+  "/smart-printing",
+  smartPrintingRoutes
+);
 
 module.exports = router;
